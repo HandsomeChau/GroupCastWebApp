@@ -1,48 +1,10 @@
-﻿body {
-    margin-top:5%;
+﻿.body {
+    margin-top: 4em;
 }
 
-#cat_table {
-    width: 70%;
-    margin-left: 15%;
-    margin-right: 15%;
-}
-
-#cat_tableCreate {
-     width: 15%;
-     margin-left: 42.5%;
-     margin-right: 42.5%;
- }
-
-#categories_displayAll_button {
-    margin-left: 15%;
-    margin-right: 15%;
-}
-
-#categories_create_button {
-
-}
-
-h1 {
-    width: 70%;
-    margin: 0 auto;
-}
-
-h3 {
-    width: 70%;
-    margin: 0 auto;
-}
-
-.response_message {
-    color: green;
-}
-
-#cat_tableUpdate {
-    width: 15%;
-    margin-left: 42.5%;
-    margin-right: 42.5%;
-}
-
-#categories_delete_button {
-
+.form-signin {
+    width: 50%;
+    margin-top: 8em;
+    margin-left: 25%;
+    margin-right: 25%;
 }

@@ -6,39 +6,31 @@
     {
         $routeProvider
             .when("/main", {
-                templateUrl: "/Views/main.html",
+                templateUrl: "/Views/Account/main.html",
                 controller: "myController"
             })
-            .when("/login", {
-                templateUrl: "/Views/Account/login.html",
+            .when("/logIn", {
+                templateUrl: "/Views/Account/logIn.html",
                 controller: "myController"
             })
-            .when("/forgotPassword", {
-                templateUrl: "/Views/Account/forgotPassword.html",
+            .when("/logOut", {
+                templateUrl: "/Views/Account/logOut.html",
                 controller: "myController"
             })
-            .when("/sendEmail", {
-                templateUrl: "/Views/Account/sendEmail.html",
+            .when("/coursesStu", {
+                templateUrl: "/Views/student/coursesStu.html",
                 controller: "myController"
             })
-            .when("/register", {
-                templateUrl: "/Views/Account/register.html",
+            .when("/viewMessageStu", {
+                templateUrl: "/Views/student/viewMessageStu.html",
                 controller: "myController"
             })
-            .when("/dashboard", {//May not use
-                templateUrl: "/Views/dashboard.html",
-                controller: "myController"
-            })
-            .when("/group", {
-                templateUrl: "/Views/group.html",
+            .when("/pickGroupTch", {
+                templateUrl: "/Views/teacher/pickGroupsTch.html",
                 controller: "myController"
             })
             .when("/sendMessage", {
-                templateUrl: "/Views/sendMessage.html",
-                controller: "myController"
-            })
-            .when("/receiveMessage", {
-                templateUrl: "/Views/receiveMessage.html",
+                templateUrl: "/Views/teacher/sendMessageTch.html",
                 controller: "myController"
             })
             .otherwise({redirectTo: "/main"});

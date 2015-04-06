@@ -3,31 +3,38 @@
 <head>
     <title></title>
     <link href="Assets/Bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="Assets/Bootstrap/css/bootstrap-theme.css" rel="stylesheet" />
+    <link href="Assets/Bootstrap/css/bootstrap-theme.css.map" rel="stylesheet" />
     <link href="Assets/Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="Assets/Bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="Assets/Bootstrap/css/bootstrap.css.map" rel="stylesheet" />
     <link href="Assets/Style.css" rel="stylesheet" />
 </head>
-<body>
+<body id="body">
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#/main">API</a>
+            <a class="navbar-brand" href="#/main">GroupCast</a>
             <div id="tabs">
                 <ul class="nav navbar-nav">
-                    <li><a ng-show="loggedIn" href="#dashboard">Display</a></li>
-                    <li><a ng-show="loggedIn" href="#group">Create</a></li>
-                    <li><a ng-show="loggedIn" href="#update">Update</a></li>
-                    <li><a ng-show="loggedIn" href="#delete">Delete</a></li>
+                    <li><a href="#logIn">LogIn</a></li>
+                    <li><a ng-show="loggedIn" href="#logOut">logOut</a></li>
+                    <li><a ng-show="loggedIn" href="#coursesStu">coursesStu</a></li>
+                    <li><a ng-show="loggedIn" href="#viewMessageStu">viewMessageStu</a></li>
+                    <li><a ng-show="loggedIn" href="#pickGroupTch">pickGroupTch</a></li>
+                    <li><a ng-show="loggedIn" href="#sendMessage">sendMessage</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div data-ng-app="w11" id="body" class="body">
-        <div ng-view></div>
+    <div data-ng-app="w11" id="content" class="body">
+        <div class="container" ng-view></div>
     </div>
-    <div class="foorter">
+    <div class="footer">
         <script data-require="angular.js@~1.4.0-beta.6" data-semver="1.4.0-beta.6" src="Assets/Scripts/angular.js"></script>
         <script data-require="angular-route@*" data-semver="1.4.0-beta.6" src="Assets/Scripts/angular-route.js"></script>
         <script src="Assets/Scripts/jquery-2.1.3.min.js"></script>
         <script src="Assets/Scripts/jquery-ui-1.11.3.js"></script>
+        <script src="Assets/Bootstrap/js/bootstrap.js"></script>
         <script src="Assets/Bootstrap/js/bootstrap.min.js"></script>
         <script src="Assets/JS/app.js"></script>
         <script src="Assets/JS/myController.js"></script>
