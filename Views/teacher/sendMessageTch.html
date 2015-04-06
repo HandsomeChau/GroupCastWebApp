@@ -1,0 +1,8 @@
+<div class="newMessage">
+    <h3 class="pageTitle">Message</h3>
+    <textarea id="inputMessage" class="inputMessageBox" rows="10" cols="80" >{{message}}</textarea>
+</div>
+<div ng-repeat="msg in preMadeMessages">
+    <p>{{msg.text}}</p>
+    <button class="btn btn-success" ng-click="loadMessage(msg.id)"></button>
+</div>

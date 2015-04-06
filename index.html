@@ -17,11 +17,11 @@
             <div id="tabs">
                 <ul class="nav navbar-nav">
                     <li><a href="#logIn">LogIn</a></li>
-                    <li><a ng-show="loggedIn" href="#logOut">logOut</a></li>
-                    <li><a ng-show="loggedIn" href="#coursesStu">coursesStu</a></li>
-                    <li><a ng-show="loggedIn" href="#viewMessageStu">viewMessageStu</a></li>
-                    <li><a ng-show="loggedIn" href="#pickGroupTch">pickGroupTch</a></li>
-                    <li><a ng-show="loggedIn" href="#sendMessage">sendMessage</a></li>
+                    <li><a ng-show="loggedInTch || loggedInStu" href="#logOut">logOut</a></li>
+                    <li><a ng-show="loggedInStu" href="#coursesStu">coursesStu</a></li>
+                    <li><a ng-show="loggedInStu" href="#viewMessageStu">viewMessageStu</a></li>
+                    <li><a ng-show="loggedInTch" href="#pickGroupTch">pickGroupTch</a></li>
+                    <li><a ng-show="loggedInTch" href="#sendMessage">sendMessageTch</a></li>
                 </ul>
             </div>
         </div>

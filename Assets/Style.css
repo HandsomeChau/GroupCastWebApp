@@ -8,3 +8,23 @@
     margin-left: 25%;
     margin-right: 25%;
 }
+
+.courses-table {
+    width: 40%;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+.messageBubble {
+    background-color: cornflowerblue;
+}
+
+.inputMessageBox {
+    width: 75%;
+    margin-left: 12.5%;
+    margin-right: 12.5%;
+}
+
+.pageTitle {
+    margin-left: 12.5%;
+}

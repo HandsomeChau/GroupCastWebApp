@@ -1,0 +1,19 @@
+<table class="table courses-table">
+    <thead>
+    <tr>
+        <th>Courses</th>
+    </tr>
+    </thead>
+    <tbody>
+    <form>
+        <tr ng-repeat="cor in courses">
+            <td>{{cor.name}}</td>
+            <td><input type="checkbox" name="course{{cor.id}}"></td>
+        </tr>
+        <tr>
+            <td><input ng-click="sendToCheckCourses()" type="submit" class="btn btn-success" value="Send To Theses Courses"></td>
+            <td></td>
+        </tr>
+    </form>
+    </tbody>
+</table>
