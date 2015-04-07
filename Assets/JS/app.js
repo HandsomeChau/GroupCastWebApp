@@ -33,6 +33,10 @@
                 templateUrl: "/Views/teacher/sendMessageTch.html",
                 controller: "myController"
             })
+            .when("/setMethod", {
+                templateUrl: "/Views/student/setMethodStun.html",
+                controller: "myController"
+            })
             .otherwise({redirectTo: "/main"});
     });
 }());
