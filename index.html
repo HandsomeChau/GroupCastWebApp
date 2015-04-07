@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"  data-ng-app="w11">
 <head>
     <title>GroupCast</title>
     <link href="Assets/Bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" />
@@ -11,23 +11,25 @@
     <link href="Assets/Style.css" rel="stylesheet" />
 </head>
 <body id="body">
+<div ng-init="loggedInStu = true; loggedInTch = true"></div>
+{{initUserType}}
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#/main">GroupCast</a>
             <div id="tabs">
                 <ul class="nav navbar-nav">
-                    <li><a href="#logIn">LogIn</a></li>
-                    <li><a ng-show="loggedInTch || loggedInStu" href="#logOut">logOut</a></li>
-                    <li><a ng-show="loggedInStu" href="#coursesStu">coursesStu</a></li>
-                    <li><a ng-show="loggedInStu" href="#viewMessageStu">viewMessageStu</a></li>
-                    <li><a ng-show="loggedInStu" href="#setMethodStu">setMethodStu</a></li>
-                    <li><a ng-show="loggedInTch" href="#pickGroupTch">pickGroupTch</a></li>
-                    <li><a ng-show="loggedInTch" href="#sendMessage">sendMessageTch</a></li>
+                    <li><a ng-href="#logIn" ng-init="logout()">LogIn</a></li>
+                    <li><a ng-show="loggedInTch || loggedInStu" ng-href="#logOut" ng-click="logout()">logOut</a></li>
+                    <li><a ng-show="loggedInStu" ng-href="#coursesStu">coursesStu</a></li>
+                    <li><a ng-show="loggedInStu" ng-href="#viewMessageStu">viewMessageStu</a></li>
+                    <li><a ng-show="loggedInStu" ng-href="#setMethodStu">setMethodStu</a></li>
+                    <li><a ng-show="loggedInTch" ng-href="#pickGroupTch">pickGroupTch</a></li>
+                    <li><a ng-show="loggedInTch" ng-href="#sendMessage">sendMessageTch</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div data-ng-app="w11" id="content" class="body">
+    <div id="content" class="body">
         <div class="container" ng-view></div>
     </div>
     <div class="footer">

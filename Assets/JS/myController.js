@@ -2,6 +2,9 @@
 {
     var app = angular.module("w11");
     var baseUrl = "http://groupcast.andrewhartline.com/api/";
+    var loggedInStu = false;
+    var loggedInTch = false;
+    var header = {'Content-Type': 'sean.hodgies@gmail.com'};
 
     var myController = function ($scope, $http)
     {
@@ -18,57 +21,117 @@
         $scope.login = function()
         {
             var email = document.getElementById('inputEmail').value;
-            var header = {'Content-Type': 'sean.hodgies@gmail.com'};
             var postRequest = "{\"email\":\"" + email + "\"}";
             var length = 0;
             var userArray = null;
+            document.cookie = ";path=/";
+            loggedInStu = false;
+            loggedInTch = false;
 
-            $http.get(baseUrl + "Users/GetUsers")
+        $http.get(baseUrl + "Users/GetUsers")
                 .success(function (response)
                 {
                     userArray = response;
                     length = response.length;
 
+                    $http.post(baseUrl + "Users/IdFromEmail", postRequest, header)
+                        .success(function (response)
+                        {
+                            var idTemp = response;
+                            for(var i = 0; i < length; i++)
+                            {
+                                if(userArray[i].id == idTemp)
+                                {
+                                    var userId = userArray[i].id;
+
+                                    $http.post(baseUrl + "Users/GetUser", postRequest, header)
+                                        .success(function (response)
+                                        {
+                                            document.cookie = "" + email + ";path=/;";
+                                            console.log(document.cookie);
+
+                                            if(response.roles[0] == 'Student')
+                                            {
+                                                loggedInStu = true;
+                                                updateUserStatus();
+                                                window.location.replace("#/coursesStu");
+                                            }
+                                            else if(response.roles[0] == 'Teacher')
+                                            {
+                                                loggedInTch = true;
+                                                updateUserStatus();
+                                                window.location.replace("#/pickGroupTch");
+                                            }
+                                            else
+                                            {
+                                                console.log("ERROR ON USER ROLE");
+                                                window.location.replace("#/main");
+                                            }
+                                        }
+                                    );
+                                }
+                            }
+                        });
                 });
-            console.log(userArray);
+        }
 
+        $scope.logout = function()
+        {
+            alert("Get no scoped");
+        }
 
-            $http.post(baseUrl + "Users/IdFromEmail", postRequest, header)
+        $scope.getAllMessagesForCourse = function()
+        {
+            var postRequest = "{\"email\":\"" + document.cookie + "\"}";
+            $http.post(baseUrl + "Users/GetMessages", postRequest, header)
                 .success(function (response)
                 {
                     console.log(response);
-                    //ToDo cross reference email with usename, else fail and return to login
-                    //$cookie.userId = 0 //Cross referenced value.
-                });
-
-            for(var i = 0; i < length; i++)
-            {
-                console.log(userArray[i]);
-            }
-
-        }
-
-        $scope.getMessagesForCourse = function()
-        {
-            $http.get(baseUrl + "TODO api call to get messages of stu for course")
-        }
-
-        $scope.getAllStudentCourses = function (stuId)
-        {
-            $http.get(baseUrl = "TODO" + stuId)
-                .success(function (response)
-                {
-                    $scope.courses = response;
                 }
             );
         }
 
-        $scope.sendToCheckCourses = function ()
+        $scope.sendMessage = function()
         {
-            var checkedCourses = $scope.null()
-            alert("Courses Received TEST");
+            var message = document.getElementById('inputMessage').value;;
+            var postRequest = "{\"email\":\"" + document.cookie + ", \"message\": \"" + message +"\"}";
+            $http.post(baseUrl + "Users/AddMessages", postRequest, header)
+                .success(function (response)
+                {
+                    console.log(response);
+                }
+            );
         }
 
+        $scope.getAllStudentCourses = function (stuId)
+        {
+            var postRequest = "{\"email\":\"" + document.cookie + "\"}";
+            $http.post(baseUrl + "Users/GetUser", postRequest, header)
+                .success(function (response)
+                {
+                    $scope.courses = response.courses;
+                    console.log(response.courses);
+                }
+            );
+        }
+
+        function updateUserStatus()
+        {
+            $scope.initUserType = "<div ng-init=\"loggedInTch = " + loggedInStu +"; loggedInStu = " + loggedInTch +"\"></div>";
+            console.log("Changed user status to: Student = " + loggedInStu + " Teacher = " + loggedInTch);
+        }
+
+        $scope.getAllTeacherCourses = function()
+        {
+            var postRequest = "{\"email\":\"" + document.cookie + "\"}";
+            $http.post(baseUrl + "Users/GetUser", postRequest, header)
+                .success(function (response)
+                {
+                    $scope.courses = response.courses;
+                    console.log(response.courses);
+                }
+            );
+        }
 
     };
 

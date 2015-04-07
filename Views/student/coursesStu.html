@@ -1,3 +1,4 @@
+<button class="btn btn-success pageTitle" ng-click="getAllStudentCourses()">Load Courses</button>
 <table class="table courses-table">
     <thead>
     <tr>
@@ -7,9 +8,8 @@
     <tbody>
     <form>
         <tr ng-repeat="cor in courses">
-            <td><a href="viewMessageStu.html">{{cor.name}}</a></td>
+            <td><a href="viewMessageStu.html"><h4>{{cor.name}}</h4></a></td>
             <!--<td><button class="btn btn-primary btn-block">{{cor.name}}</button></td>-->
-            <td><input type="checkbox" name="course{{cor.id}}"></td>
         </tr>
     </form>
     </tbody>
