@@ -15,9 +15,47 @@
             );
         }
 
-        $scope.getAllStudentCourses = function ()
+        $scope.login = function()
         {
-            $http.get(baseUrl = "")
+            var email = document.getElementById('inputEmail').value;
+            var header = {'Content-Type': 'sean.hodgies@gmail.com'};
+            var postRequest = "{\"email\":\"" + email + "\"}";
+            var length = 0;
+            var userArray = null;
+
+            $http.get(baseUrl + "Users/GetUsers")
+                .success(function (response)
+                {
+                    userArray = response;
+                    length = response.length;
+
+                });
+            console.log(userArray);
+
+
+            $http.post(baseUrl + "Users/IdFromEmail", postRequest, header)
+                .success(function (response)
+                {
+                    console.log(response);
+                    //ToDo cross reference email with usename, else fail and return to login
+                    //$cookie.userId = 0 //Cross referenced value.
+                });
+
+            for(var i = 0; i < length; i++)
+            {
+                console.log(userArray[i]);
+            }
+
+        }
+
+        $scope.getMessagesForCourse = function()
+        {
+            $http.get(baseUrl + "TODO api call to get messages of stu for course")
+        }
+
+        $scope.getAllStudentCourses = function (stuId)
+        {
+            $http.get(baseUrl = "TODO" + stuId)
                 .success(function (response)
                 {
                     $scope.courses = response;
