@@ -58,7 +58,7 @@
                                                 updateUserStatus();
                                                 window.location.replace("#/coursesStu");
                                             }
-                                            else if(response.roles[0] == 'Teacher')
+                                            else if(response.roles[0] == 'Instructor')
                                             {
                                                 loggedInTch = true;
                                                 updateUserStatus();
@@ -97,7 +97,7 @@
         {
             var message = document.getElementById('inputMessage').value;;
             var postRequest = "{\"email\":\"" + document.cookie + ", \"message\": \"" + message +"\"}";
-            $http.post(baseUrl + "Users/AddMessages", postRequest, header)
+            $http.post(baseUrl +  "groupcast/post", postRequest, header)
                 .success(function (response)
                 {
                     console.log(response);
