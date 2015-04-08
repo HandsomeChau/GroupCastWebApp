@@ -84,11 +84,18 @@
 
         $scope.getAllMessagesForCourse = function()
         {
+            var crn = document.getElementById('courseNum').innerHTML;
             var postRequest = "{\"email\":\"" + document.cookie + "\"}";
-            $http.post(baseUrl + "Users/GetMessages", postRequest, header)
+            $http.get(baseUrl + "courses/notifications/" + crn)
                 .success(function (response)
                 {
-                    console.log(response);
+                    //console.log(JSON.stringify(response));
+                    $scope.messages = response;
+                }
+            )
+                .error(function (response)
+                {
+                    alert("Fail to get messages")
                 }
             );
         }

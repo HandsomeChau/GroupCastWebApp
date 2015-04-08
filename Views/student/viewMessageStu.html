@@ -1,9 +1,8 @@
+<p ng-show="true" id="courseNum">{{param}}</p>
 <button class="btn btn-success pageTitle" ng-click="getAllMessagesForCourse()">Get All Messages</button>
+<br>
 <div class="container messageBubble" ng-repeat="msg in messages">
     <p>
-        {{msg.text}}
+        {{msg.Text}}
     </p>
 </div>
-
-<p>Here:{{param}}</p>
-
