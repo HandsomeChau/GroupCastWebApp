@@ -84,17 +84,18 @@
 
         $scope.getAllMessagesForCourse = function()
         {
-            var crn = document.getElementById('courseNum').value;
-            var postRequest = "{{\"email\":\"" + document.cookie + "\"}{\"crn\":\"" + crn + "\"}}";
-            $http.post(baseUrl + "Users/GetMessages", postRequest, header)
+            var crn = document.getElementById('courseNum').innerHTML;
+            var postRequest = "{\"email\":\"" + document.cookie + "\"}";
+            $http.get(baseUrl + "courses/notifications/" + crn)
                 .success(function (response)
                 {
-                    console.log(response);
+                    //console.log(JSON.stringify(response));
+                    $scope.messages = response;
                 }
             )
                 .error(function (response)
                 {
-                    alert("Everyone you know is dead!")
+                    alert("Fail to get messages")
                 }
             );
         }
