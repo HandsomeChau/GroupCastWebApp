@@ -21,6 +21,10 @@
                 templateUrl: "/Views/student/coursesStu.html",
                 controller: "myController"
             })
+            .when("/setMethodStu", {
+                templateUrl: "/Views/student/setMethodStu.html",
+                controller: "myController"
+            })
             .when("/viewMessageStu/:param", {
                 templateUrl: "/Views/student/viewMessageStu.html",
                 controller: "myController"
@@ -29,12 +33,8 @@
                 templateUrl: "/Views/teacher/pickGroupsTch.html",
                 controller: "myController"
             })
-            .when("/sendMessage", {
+            .when("/sendMessageTch", {
                 templateUrl: "/Views/teacher/sendMessageTch.html",
-                controller: "myController"
-            })
-            .when("/setMethod", {
-                templateUrl: "/Views/student/setMethodStun.html",
                 controller: "myController"
             })
             .otherwise({redirectTo: "/main"});
