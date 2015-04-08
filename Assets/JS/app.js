@@ -21,7 +21,7 @@
                 templateUrl: "/Views/student/coursesStu.html",
                 controller: "myController"
             })
-            .when("/viewMessageStu", {
+            .when("/viewMessageStu/:param", {
                 templateUrl: "/Views/student/viewMessageStu.html",
                 controller: "myController"
             })

@@ -6,8 +6,10 @@
     var loggedInTch = false;
     var header = {'Content-Type': 'sean.hodgies@gmail.com'};
 
-    var myController = function ($scope, $http)
+    var myController = function ($scope, $http, $routeParams)
     {
+        $scope.param = $routeParams.param;
+
         $scope.categories_displayAll_test = function ()
         {
             $http.get(baseUrl + "")
