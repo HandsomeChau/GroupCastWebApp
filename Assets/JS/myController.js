@@ -84,11 +84,17 @@
 
         $scope.getAllMessagesForCourse = function()
         {
-            var postRequest = "{\"email\":\"" + document.cookie + "\"}";
+            var crn = document.getElementById('courseNum').value;
+            var postRequest = "{{\"email\":\"" + document.cookie + "\"}{\"crn\":\"" + crn + "\"}}";
             $http.post(baseUrl + "Users/GetMessages", postRequest, header)
                 .success(function (response)
                 {
                     console.log(response);
+                }
+            )
+                .error(function (response)
+                {
+                    alert("Everyone you know is dead!")
                 }
             );
         }
