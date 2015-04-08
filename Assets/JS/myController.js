@@ -142,6 +142,27 @@
             );
         }
 
+        $scope.saveCommunicationMethods = function ()
+        {
+            var communicationMethods = document.getElementsByClassName('').value;
+
+            $http.post(baseUrl + "",postRequest, header)
+                .success(function (response)
+                {
+                    console.log(response.courses);
+                }
+            );
+        }
+
+        $scope.loadCommunicationMethod = function ()
+        {
+            $http.get(baseUrl + "contactmethods/GetContactMethods")
+                .success(function (response)
+                {
+                    $scope.methods = response;
+                }
+            );
+        }
     };
 
     app.controller("myController", ["$scope", "$http", "$routeParams", myController]);
