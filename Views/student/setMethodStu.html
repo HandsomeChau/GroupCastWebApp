@@ -1,12 +1,14 @@
-<h3>Select Contact Method</h3>
-<button ng-click="loadCommunicationMethod()" class="btn btn-success">Load Methods</button>
+<h3>Select Contact Methods</h3>
+<button ng-click="loadContactMethods()" class="btn btn-success">Load Methods</button>
 <div class="container">
     <table class="table courses-table">
-        <tr ng-repeat="method in methods">
-            <td><p>{{method.name}}</p></td>
-            <td><input type="checkbox" class="checkbox" about="{{method.id}}"></td>
-        </tr>
+        <form>
+            <tr ng-repeat="method in methods">
+                <td><p>{{method.name}}</p></td>
+                <td><input type="checkbox" ng-model="method.checkbox" class="checkbox" name="{{method.id}}" value="{{method.id}}"></td>
+            </tr>
+        </form>
     </table>
 </div>
-
-<button class="btn btn-warning" ng-show="methods" ng-click="saveCommunicationMethods()">Save Preferences Methods</button>
+<button ng-click="saveContactMethods()" type="submit" class="btn btn-warning" ng-show="methods">Save</button>
+<h3>{{changes}}</h3>
