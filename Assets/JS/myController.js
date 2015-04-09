@@ -5,6 +5,7 @@
     var loggedInStu = false;
     var loggedInTch = false;
     var header = {'Content-Type': 'sean.hodgies@gmail.com'};
+    var sendToString = [];
 
     var myController = function ($scope, $http, $routeParams)
     {
@@ -100,17 +101,29 @@
             );
         }
 
-        $scope.sendMessage = function()
-        {
-            var message = document.getElementById('inputMessage').value;;
-            var postRequest = "{\"email\":\"" + document.cookie + ", \"message\": \"" + message +"\"}";
-            $http.post(baseUrl +  "groupcast/post", postRequest, header)
-                .success(function (response)
-                {
-                    console.log(response);
-                }
-            );
+        $scope.sendMessage = function() {
+            var message = document.getElementById('inputMessage').value;
+            alert(sendToString);
+            if (sendToString.length < 1) {
+                alert("Please select group to send Message");
+                window.location.replace("#/pickGroupTch");
+            } else {
+                var postRequest = "{\"email\":\"" + document.cookie + "\"}";
+
+                $http.post(baseUrl + "Users/IdFromEmail", postRequest, header)
+                .success(function (response) {
+                    var idTemp = response;
+                    var postRequest = "{\"id\":\"" + idTemp + "\", \"crns\":["+sendToString+"] , \"message\": \"" + message + "\"}";
+                        alert(postRequest);
+                        console.log(postRequest);
+                    $http.post(baseUrl + "groupcast/post", postRequest, header)
+                        .success(function (response) {
+                            console.log(response);
+                        });
+                });
+            }
         }
+
 
         $scope.getAllStudentCourses = function (stuId)
         {
@@ -119,11 +132,11 @@
                 .success(function (response)
                 {
                     $scope.courses = response.courses;
+                    courses = response.courses;
                     console.log(response.courses);
                 }
             );
         }
-
         function updateUserStatus()
         {
             $scope.initUserType = "<div ng-init=\"loggedInTch = " + loggedInStu +"; loggedInStu = " + loggedInTch +"\"></div>";
@@ -140,6 +153,20 @@
                     console.log(response.courses);
                 }
             );
+        }
+
+        $scope.sendToCheckCourses = function()
+        {
+            sendToString = [];
+                angular.forEach($scope.courses, function(course) {
+                    if (course.checked) sendToString.push(" \""+course.crn+"\"");
+                });
+            if(sendToString.length<1){
+                alert("Please select at least one group to send Message");
+            }else {
+                window.location.replace("#/sendMessageTch");
+            }
+
         }
 
     };

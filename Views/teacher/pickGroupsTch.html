@@ -7,10 +7,10 @@
     </tr>
     </thead>
     <tbody>
-    <form>
+    <form name="courseSendCheckBox">
         <tr ng-repeat="cor in courses">
             <td>{{cor.name}}</td>
-            <td><input type="checkbox" name="course{{cor.id}}"></td>
+            <td><input type="checkbox" name="{{cor.crn}}" value="{{cor.crn}}" ng-model="cor.checked"></td>
         </tr>
         <tr>
             <td><input ng-click="sendToCheckCourses()" type="submit" class="btn btn-success" value="Send To Theses Courses"></td>
